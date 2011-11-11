@@ -1,0 +1,3 @@
+Espero ya tengan todos instalado su cliente SVN, pueden instalar tortoise, funciona muy 
+bien y es fácil de configurar, espero el día de mañana subir el archivo base para poder,
+empezar a trabajar, por favor revisen la sección correspondiente en el wiki.
