@@ -7,3 +7,12 @@ C:\Documents and Settings\Administrador\Escritorio\Manejadro_Base_de_Datos\Manej
 C:\Documents and Settings\Administrador\Escritorio\Manejadro_Base_de_Datos\Manejadro_Base_de_Datos\bin\Debug\Manejadro_Base_de_Datos.pdb
 C:\Documents and Settings\Administrador\Escritorio\Manejadro_Base_de_Datos\Manejadro_Base_de_Datos\obj\x86\Debug\Manejadro_Base_de_Datos.exe
 C:\Documents and Settings\Administrador\Escritorio\Manejadro_Base_de_Datos\Manejadro_Base_de_Datos\obj\x86\Debug\Manejadro_Base_de_Datos.pdb
+C:\Documents and Settings\Administrador\Escritorio\Proyecto Base de datos\Proyecto\Manejadro_Base_de_Datos\Manejadro_Base_de_Datos\obj\x86\Debug\Manejadro_Base_de_Datos.exe
+C:\Documents and Settings\Administrador\Escritorio\Proyecto Base de datos\Proyecto\Manejadro_Base_de_Datos\Manejadro_Base_de_Datos\obj\x86\Debug\Manejadro_Base_de_Datos.pdb
+C:\Documents and Settings\Administrador\Escritorio\Proyecto Base de datos\Proyecto\Manejadro_Base_de_Datos\Manejadro_Base_de_Datos\bin\Debug\Manejadro_Base_de_Datos.exe
+C:\Documents and Settings\Administrador\Escritorio\Proyecto Base de datos\Proyecto\Manejadro_Base_de_Datos\Manejadro_Base_de_Datos\bin\Debug\Manejadro_Base_de_Datos.pdb
+C:\Documents and Settings\Administrador\Escritorio\Proyecto Base de datos\Proyecto\Manejadro_Base_de_Datos\Manejadro_Base_de_Datos\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Administrador\Escritorio\Proyecto Base de datos\Proyecto\Manejadro_Base_de_Datos\Manejadro_Base_de_Datos\obj\x86\Debug\Manejadro_Base_de_Datos.frmAcceso.resources
+C:\Documents and Settings\Administrador\Escritorio\Proyecto Base de datos\Proyecto\Manejadro_Base_de_Datos\Manejadro_Base_de_Datos\obj\x86\Debug\Manejadro_Base_de_Datos.Properties.Resources.resources
+C:\Documents and Settings\Administrador\Escritorio\Proyecto Base de datos\Proyecto\Manejadro_Base_de_Datos\Manejadro_Base_de_Datos\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Documents and Settings\Administrador\Escritorio\Proyecto Base de datos\Proyecto\Manejadro_Base_de_Datos\Manejadro_Base_de_Datos\obj\x86\Debug\GenerateResource.write.1.tlog

@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace Manejadro_Base_de_Datos
 {
@@ -32,9 +33,17 @@ namespace Manejadro_Base_de_Datos
             int Tipo=-1;
             if(cmbUsuario.Text!="" && txtPassword.Text!="")
             {
-                Tipo = verificarTipo();   
-                if(Tipo!=-1)
-                    currentUser = new Usuario(cmbUsuario.Text, txtPassword.Text, Tipo);
+                Tipo = verificarTipo();
+                if (Tipo != -1)
+                {
+                    try
+                    {
+                        currentUser = new Usuario(cmbUsuario.Text, txtPassword.Text, Tipo);
+                    }
+                    catch(SqlException exc){
+                        MessageBox.Show(exc.Message);
+                    }
+                }//if
             }
         }
 
