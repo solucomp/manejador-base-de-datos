@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.lbAcceso = new System.Windows.Forms.Label();
-            this.cmbUsuario = new System.Windows.Forms.ComboBox();
             this.lbUsuario = new System.Windows.Forms.Label();
             this.lbPassword = new System.Windows.Forms.Label();
             this.txtPassword = new System.Windows.Forms.TextBox();
@@ -39,6 +38,7 @@
             this.rdMySQL = new System.Windows.Forms.RadioButton();
             this.rdSQLite = new System.Windows.Forms.RadioButton();
             this.rdAccess = new System.Windows.Forms.RadioButton();
+            this.txtUsuario = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lbAcceso
@@ -49,17 +49,6 @@
             this.lbAcceso.Size = new System.Drawing.Size(92, 13);
             this.lbAcceso.TabIndex = 0;
             this.lbAcceso.Text = "Acceso al sistema";
-            // 
-            // cmbUsuario
-            // 
-            this.cmbUsuario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbUsuario.FormattingEnabled = true;
-            this.cmbUsuario.Items.AddRange(new object[] {
-            "SA"});
-            this.cmbUsuario.Location = new System.Drawing.Point(220, 42);
-            this.cmbUsuario.Name = "cmbUsuario";
-            this.cmbUsuario.Size = new System.Drawing.Size(160, 21);
-            this.cmbUsuario.TabIndex = 1;
             // 
             // lbUsuario
             // 
@@ -85,14 +74,14 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(158, 20);
-            this.txtPassword.TabIndex = 4;
+            this.txtPassword.TabIndex = 1;
             // 
             // btnConectar
             // 
             this.btnConectar.Location = new System.Drawing.Point(133, 285);
             this.btnConectar.Name = "btnConectar";
             this.btnConectar.Size = new System.Drawing.Size(75, 23);
-            this.btnConectar.TabIndex = 5;
+            this.btnConectar.TabIndex = 2;
             this.btnConectar.Text = "Conectar";
             this.btnConectar.UseVisualStyleBackColor = true;
             this.btnConectar.Click += new System.EventHandler(this.btnConectar_Click);
@@ -102,7 +91,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(303, 285);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 6;
+            this.btnCancelar.TabIndex = 3;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -151,12 +140,20 @@
             this.rdAccess.Text = "Access";
             this.rdAccess.UseVisualStyleBackColor = true;
             // 
+            // txtUsuario
+            // 
+            this.txtUsuario.Location = new System.Drawing.Point(220, 45);
+            this.txtUsuario.Name = "txtUsuario";
+            this.txtUsuario.Size = new System.Drawing.Size(158, 20);
+            this.txtUsuario.TabIndex = 0;
+            // 
             // frmAcceso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(390, 364);
+            this.Controls.Add(this.txtUsuario);
             this.Controls.Add(this.rdAccess);
             this.Controls.Add(this.rdSQLite);
             this.Controls.Add(this.rdMySQL);
@@ -166,13 +163,13 @@
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.lbPassword);
             this.Controls.Add(this.lbUsuario);
-            this.Controls.Add(this.cmbUsuario);
             this.Controls.Add(this.lbAcceso);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.Name = "frmAcceso";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Acceso";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmAcceso_FormClosed);
             this.Load += new System.EventHandler(this.frmAcceso_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -182,7 +179,6 @@
         #endregion
 
         private System.Windows.Forms.Label lbAcceso;
-        private System.Windows.Forms.ComboBox cmbUsuario;
         private System.Windows.Forms.Label lbUsuario;
         private System.Windows.Forms.Label lbPassword;
         private System.Windows.Forms.TextBox txtPassword;
@@ -192,6 +188,7 @@
         private System.Windows.Forms.RadioButton rdMySQL;
         private System.Windows.Forms.RadioButton rdSQLite;
         private System.Windows.Forms.RadioButton rdAccess;
+        private System.Windows.Forms.TextBox txtUsuario;
     }
 }
 

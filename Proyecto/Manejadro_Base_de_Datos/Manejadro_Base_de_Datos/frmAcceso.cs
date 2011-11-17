@@ -22,31 +22,41 @@ namespace Manejadro_Base_de_Datos
         //Datos estáticos públicos de uso general para otras clases.
 
 
-
+        //Acción del botón cerrar
         private void btnCancelar_Click(object sender, EventArgs e)
         {
+            //Termina la aplicacion
             Application.Exit();
         }
 
+        //Funcion click del boton de coneccion
         private void btnConectar_Click(object sender, EventArgs e)
         {
+            //Indica el tipo de coneccion seleccionado
             int Tipo=-1;
-            if(cmbUsuario.Text!="" && txtPassword.Text!="")
+            //Verifica que los campos contengan informacion
+            if(txtUsuario.Text!="" && txtPassword.Text!="")
             {
                 Tipo = verificarTipo();
                 if (Tipo != -1)
                 {
                     try
                     {
-                        currentUser = new Usuario(cmbUsuario.Text, txtPassword.Text, Tipo);
+                        frmManagement objfrmManagement;
+                        currentUser = new Usuario(txtUsuario.Text, txtPassword.Text, Tipo);
+                        objfrmManagement = new frmManagement(currentUser);
+                        objfrmManagement.Show();                        
+                        this.Hide();
+                        
                     }
-                    catch(SqlException exc){
+                    catch(Exception exc){
                         MessageBox.Show(exc.Message);
                     }
                 }//if
             }
         }
 
+        //Regresa el tipo de servidor o archivo seleccionado necesario para la conexion
         private int verificarTipo()
         {
             if (rdSQLServer.Checked)
@@ -68,9 +78,15 @@ namespace Manejadro_Base_de_Datos
             return -1;
         }
 
+        //Establece el radioButton de sqlserver en verdadero al cargar el formulario
         private void frmAcceso_Load(object sender, EventArgs e)
         {
             rdSQLServer.Checked = true;
+        }
+
+        private void frmAcceso_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
