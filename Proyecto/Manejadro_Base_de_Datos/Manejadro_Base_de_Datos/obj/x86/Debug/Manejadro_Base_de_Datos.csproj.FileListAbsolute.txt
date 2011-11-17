@@ -26,3 +26,4 @@ C:\Documents and Settings\Administrador\Escritorio\Proyecto\Proyecto\Manejadro_B
 C:\Documents and Settings\Administrador\Escritorio\Proyecto\Proyecto\Manejadro_Base_de_Datos\Manejadro_Base_de_Datos\obj\x86\Debug\Manejadro_Base_de_Datos.Properties.Resources.resources
 C:\Documents and Settings\Administrador\Escritorio\Proyecto\Proyecto\Manejadro_Base_de_Datos\Manejadro_Base_de_Datos\obj\x86\Debug\GenerateResource.read.1.tlog
 C:\Documents and Settings\Administrador\Escritorio\Proyecto\Proyecto\Manejadro_Base_de_Datos\Manejadro_Base_de_Datos\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Documents and Settings\Administrador\Escritorio\Proyecto\Proyecto\Manejadro_Base_de_Datos\Manejadro_Base_de_Datos\obj\x86\Debug\Manejadro_Base_de_Datos.frmCrearBasedeDatos.resources

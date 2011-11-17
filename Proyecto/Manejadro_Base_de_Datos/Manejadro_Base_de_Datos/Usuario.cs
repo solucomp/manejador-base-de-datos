@@ -76,6 +76,27 @@ namespace Manejadro_Base_de_Datos
             return null;
         }
 
+        //Crea una base de datos
+        public void crearBasedeDatos(string nombre)
+        {
+            if (tipoServidor == (int)enumTipo.SQLServer)
+            {               
+                sqlServerCommand.CommandText = "create database " + nombre + "";
+                sqlServerCommand.ExecuteNonQuery();
+            }
+
+        }
+
+        public void eliminarBasedeDatos(string nombre)
+        {
+            if (tipoServidor == (int)enumTipo.SQLServer)
+            {
+                sqlServerCommand.CommandText = "drop database " + nombre + "";
+                sqlServerCommand.ExecuteNonQuery();
+            }
+
+        }
+
         public void cerrarConexion()
         {
             if(tipoServidor == (int) enumTipo.SQLServer)

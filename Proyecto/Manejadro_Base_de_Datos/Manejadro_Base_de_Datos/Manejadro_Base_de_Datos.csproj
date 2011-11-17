@@ -52,6 +52,12 @@
     <Compile Include="frmAcceso.Designer.cs">
       <DependentUpon>frmAcceso.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmCrearBasedeDatos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCrearBasedeDatos.Designer.cs">
+      <DependentUpon>frmCrearBasedeDatos.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmManagement.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,6 +69,9 @@
     <Compile Include="Usuario.cs" />
     <EmbeddedResource Include="frmAcceso.resx">
       <DependentUpon>frmAcceso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCrearBasedeDatos.resx">
+      <DependentUpon>frmCrearBasedeDatos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmManagement.resx">
       <DependentUpon>frmManagement.cs</DependentUpon>
