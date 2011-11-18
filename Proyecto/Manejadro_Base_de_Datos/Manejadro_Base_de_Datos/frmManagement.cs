@@ -20,18 +20,40 @@ namespace Manejadro_Base_de_Datos
             usuarioActual = us;
         }
 
+        //int indice seleccionado actualmente del combobox
+        int BasedeDatosActual = 0;
+        bool flag = false;
+
         private void frmManagement_Load(object sender, EventArgs e)
         {
             //Al cargar se colocan las bases de datos existentes en el comboBox
             actualizarBasesdeDatos();
+            BasedeDatosActual = cmbBasesDeDatos.SelectedIndex;            
         }
+
+        
 
         //Actualiza las bases de datos del comboBox
         private void actualizarBasesdeDatos()
         {
-            DataSet tmpDataSet = usuarioActual.obtenerBasedeDatos();
+            flag = true;
+
+            DataSet tmpDataSetDataBases = usuarioActual.obtenerBasedeDatos();
             cmbBasesDeDatos.DisplayMember = "name";
-            cmbBasesDeDatos.DataSource = tmpDataSet.Tables[0];      
+            cmbBasesDeDatos.DataSource = tmpDataSetDataBases.Tables[0];
+
+            if(cmbBasesDeDatos.Items.Count-1 >= BasedeDatosActual){
+                cmbBasesDeDatos.SelectedIndex = BasedeDatosActual;
+            }
+            else{
+                cmbBasesDeDatos.SelectedIndex = BasedeDatosActual - 1 ;
+            }
+
+            DataSet tmpDataSetTables = usuarioActual.obtenerTablas(cmbBasesDeDatos.Text);
+            listTablas.DisplayMember = "name";
+            listTablas.DataSource = tmpDataSetTables.Tables[0];
+
+            flag = false;   
         }
 
         private void frmManagement_FormClosing(object sender, FormClosingEventArgs e)
@@ -62,6 +84,15 @@ namespace Manejadro_Base_de_Datos
                 
             }
 
+        }
+
+        private void cmbBasesDeDatos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (flag == false)
+            {
+                BasedeDatosActual = cmbBasesDeDatos.SelectedIndex;
+                actualizarBasesdeDatos();          
+            }          
         }
     }
 }

@@ -22,8 +22,7 @@ namespace Manejadro_Base_de_Datos
 
         //Objetos necesario para SQLServer
         private SqlConnection sqlServerConnection;
-        private SqlCommand sqlServerCommand;
-        private DataSet sqlServerDataSet;
+        private SqlCommand sqlServerCommand;        
         private SqlDataAdapter sqlServerDataAdapter;        
 
         //Constructor de la clase.
@@ -37,8 +36,7 @@ namespace Manejadro_Base_de_Datos
                 sqlServerConnection = new SqlConnection(strConeccion);
                 sqlServerConnection.Open();
                 //Se inicializan los componentes
-                sqlServerCommand = new SqlCommand();
-                sqlServerDataSet = new DataSet();
+                sqlServerCommand = new SqlCommand();              
                 sqlServerDataAdapter = new SqlDataAdapter();
                 sqlServerCommand.Connection = sqlServerConnection;
             }
@@ -64,7 +62,8 @@ namespace Manejadro_Base_de_Datos
         {
             if(tipoServidor == (int) enumTipo.SQLServer)
             {
-                sqlServerDataSet.Clear();
+                DataSet sqlServerDataSet = new DataSet();
+                
                 sqlServerCommand.CommandText = "Select name From sys.databases";
                 sqlServerDataAdapter.SelectCommand = sqlServerCommand;
                 sqlServerCommand.ExecuteNonQuery();
@@ -72,6 +71,26 @@ namespace Manejadro_Base_de_Datos
                 return sqlServerDataSet;
             }
 
+
+            return null;
+        }
+
+        public DataSet obtenerTablas(string strBasedeDatos)
+        {
+            if(tipoServidor == (int) enumTipo.SQLServer)
+            {
+                DataSet sqlServerDataSet = new DataSet() ;
+
+                sqlServerCommand.CommandText = "Use "+strBasedeDatos+"";                               
+                sqlServerCommand.ExecuteNonQuery();
+                sqlServerCommand.CommandText = "select name from sys.tables";
+                sqlServerCommand.ExecuteNonQuery();
+                sqlServerDataAdapter.Fill(sqlServerDataSet);
+                sqlServerCommand.CommandText = "Use master";
+                sqlServerCommand.ExecuteNonQuery();
+
+                return sqlServerDataSet;
+            }
 
             return null;
         }
