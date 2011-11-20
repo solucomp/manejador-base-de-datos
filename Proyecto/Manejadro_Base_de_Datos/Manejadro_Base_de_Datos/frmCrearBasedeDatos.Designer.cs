@@ -84,7 +84,7 @@
             this.MaximizeBox = false;
             this.Name = "frmCrearBasedeDatos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmCrearBasedeDatos";
+            this.Text = "Crear Base de Datos";
             this.ResumeLayout(false);
             this.PerformLayout();
 

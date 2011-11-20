@@ -86,10 +86,10 @@ namespace Manejadro_Base_de_Datos
             {
                 DataSet MySqlDataSet = new DataSet();
 
-                MysqlCommand.CommandText = "select SCHEMA_NAME from information_schema.SCHEMATA;";
-                MysqlDataAdapter.SelectCommand = MysqlCommand;
-                MysqlCommand.ExecuteNonQuery();
-                MysqlDataAdapter.Fill(MySqlDataSet);
+                //MysqlCommand.CommandText = "select SCHEMA_NAME from information_schema.SCHEMATA;";
+                //MysqlDataAdapter.SelectCommand = MysqlCommand;
+               // MysqlCommand.ExecuteNonQuery();
+               // MysqlDataAdapter.Fill(MySqlDataSet);
                 return MySqlDataSet;
             }
 
@@ -117,13 +117,13 @@ namespace Manejadro_Base_de_Datos
             {
                 DataSet MySqlDataSet = new DataSet();
 
-                MysqlCommand.CommandText = "use "+strBasedeDatos+";" ;
-                MysqlCommand.ExecuteNonQuery();
-                MysqlCommand.CommandText = "show tables;";
-                MysqlCommand.ExecuteNonQuery();
-                MysqlDataAdapter.Fill(MySqlDataSet);
-                MysqlCommand.CommandText = "use pet;";
-                MysqlCommand.ExecuteNonQuery();
+               // MysqlCommand.CommandText = "use "+strBasedeDatos+";" ;
+               // MysqlCommand.ExecuteNonQuery();
+                //MysqlCommand.CommandText = "show tables;";
+               // MysqlCommand.ExecuteNonQuery();
+               // MysqlDataAdapter.Fill(MySqlDataSet);
+                //MysqlCommand.CommandText = "use pet;";
+               // MysqlCommand.ExecuteNonQuery();
 
                 return MySqlDataSet;
             }
@@ -140,8 +140,8 @@ namespace Manejadro_Base_de_Datos
             }
             if (tipoServidor == (int)enumTipo.MySQL)
             {
-                MysqlCommand.CommandText = "create database " + nombre + ";";
-                MysqlCommand.ExecuteNonQuery();
+                //MysqlCommand.CommandText = "create database " + nombre + ";";
+                //MysqlCommand.ExecuteNonQuery();
             }
 
         }
@@ -158,6 +158,50 @@ namespace Manejadro_Base_de_Datos
                 MysqlCommand.CommandText = "drop database " + nombre + ";";
                 MysqlCommand.ExecuteNonQuery();
             }
+        }
+
+        public void eliminarTabla(string strBasedeDatos, string strTabla)
+        {
+            if (tipoServidor == (int)enumTipo.SQLServer)
+            {
+                sqlServerCommand.CommandText = "use " +  strBasedeDatos;
+                sqlServerCommand.ExecuteNonQuery();
+                sqlServerCommand.CommandText = "drop table " + strTabla;
+                sqlServerCommand.ExecuteNonQuery();
+            }
+        }
+
+        public void crearTabla(string nombre, string BasedeDatos, List<string> listaCampos)
+        {
+
+
+            if (tipoServidor == (int)enumTipo.SQLServer)
+            {
+                string strQuery = "CREATE TABLE " + nombre + " ( ";
+
+                int counter = 0;
+                foreach (string str in listaCampos)
+                {
+                    if (counter < listaCampos.Count - 1)
+                    {
+                        strQuery += str + ",";
+                    }
+                    else
+                    {
+                        strQuery += str + ")";
+                    }
+                    counter++;
+                }
+
+                sqlServerCommand.CommandText = "use "+BasedeDatos;
+                sqlServerCommand.ExecuteNonQuery();
+                sqlServerCommand.CommandText = strQuery;
+                sqlServerCommand.ExecuteNonQuery();
+                sqlServerCommand.CommandText = "use master";
+                sqlServerCommand.ExecuteNonQuery();
+
+            }
+
         }
 
         public void cerrarConexion()
