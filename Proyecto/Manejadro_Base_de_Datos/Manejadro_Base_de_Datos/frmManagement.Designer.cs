@@ -29,19 +29,29 @@
         private void InitializeComponent()
         {
             this.gbMenu = new System.Windows.Forms.GroupBox();
+            this.btnCrearTabla = new System.Windows.Forms.Button();
             this.btnEliminarBasedeDatos = new System.Windows.Forms.Button();
             this.btnCrearBaseDeDatos = new System.Windows.Forms.Button();
             this.cmbBasesDeDatos = new System.Windows.Forms.ComboBox();
             this.lbBaseDeDatos = new System.Windows.Forms.Label();
             this.listTablas = new System.Windows.Forms.ListBox();
             this.lbTablas = new System.Windows.Forms.Label();
-            this.btnCrearTabla = new System.Windows.Forms.Button();
+
+            this.btnEliminarTabla = new System.Windows.Forms.Button();
+
+
+
             this.gbMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbMenu
             // 
+
+            this.gbMenu.Controls.Add(this.btnEliminarTabla);
             this.gbMenu.Controls.Add(this.btnCrearTabla);
+
+          
+
             this.gbMenu.Controls.Add(this.btnEliminarBasedeDatos);
             this.gbMenu.Controls.Add(this.btnCrearBaseDeDatos);
             this.gbMenu.Location = new System.Drawing.Point(12, 70);
@@ -50,6 +60,10 @@
             this.gbMenu.TabIndex = 0;
             this.gbMenu.TabStop = false;
             this.gbMenu.Text = "Menú";
+            // 
+            // btnCrearTabla
+            // 
+         
             // 
             // btnEliminarBasedeDatos
             // 
@@ -103,10 +117,22 @@
             this.lbTablas.AutoSize = true;
             this.lbTablas.Location = new System.Drawing.Point(269, 18);
             this.lbTablas.Name = "lbTablas";
-            this.lbTablas.Size = new System.Drawing.Size(82, 13);
+            this.lbTablas.Size = new System.Drawing.Size(39, 13);
             this.lbTablas.TabIndex = 4;
-            this.lbTablas.Text = "Bases de Datos";
+            this.lbTablas.Text = "Tablas";
             // 
+
+            // btnEliminarTabla
+            // 
+            this.btnEliminarTabla.Location = new System.Drawing.Point(28, 118);
+            this.btnEliminarTabla.Name = "btnEliminarTabla";
+            this.btnEliminarTabla.Size = new System.Drawing.Size(150, 27);
+            this.btnEliminarTabla.TabIndex = 6;
+            this.btnEliminarTabla.Text = "Eliminar Tabla";
+            this.btnEliminarTabla.UseVisualStyleBackColor = true;
+            this.btnEliminarTabla.Click += new System.EventHandler(this.btnEliminarTabla_Click);
+            // 
+
             // btnCrearTabla
             // 
             this.btnCrearTabla.Location = new System.Drawing.Point(28, 85);
@@ -117,6 +143,7 @@
             this.btnCrearTabla.UseVisualStyleBackColor = true;
             this.btnCrearTabla.Click += new System.EventHandler(this.btnCrearTabla_Click);
             // 
+
             // frmManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -150,6 +177,11 @@
         private System.Windows.Forms.Button btnEliminarBasedeDatos;
         private System.Windows.Forms.ListBox listTablas;
         private System.Windows.Forms.Label lbTablas;
+
         private System.Windows.Forms.Button btnCrearTabla;
+        private System.Windows.Forms.Button btnEliminarTabla;
+
+       
+
     }
 }

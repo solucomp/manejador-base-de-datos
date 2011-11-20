@@ -86,10 +86,10 @@ namespace Manejadro_Base_de_Datos
             {
                 DataSet MySqlDataSet = new DataSet();
 
-                //MysqlCommand.CommandText = "select SCHEMA_NAME from information_schema.SCHEMATA;";
-                //MysqlDataAdapter.SelectCommand = MysqlCommand;
-               // MysqlCommand.ExecuteNonQuery();
-               // MysqlDataAdapter.Fill(MySqlDataSet);
+                MysqlCommand.CommandText = "select SCHEMA_NAME from information_schema.SCHEMATA;";
+                MysqlDataAdapter.SelectCommand = MysqlCommand;
+                MysqlCommand.ExecuteNonQuery();
+                MysqlDataAdapter.Fill(MySqlDataSet);
                 return MySqlDataSet;
             }
 
@@ -117,13 +117,13 @@ namespace Manejadro_Base_de_Datos
             {
                 DataSet MySqlDataSet = new DataSet();
 
-               // MysqlCommand.CommandText = "use "+strBasedeDatos+";" ;
-               // MysqlCommand.ExecuteNonQuery();
-                //MysqlCommand.CommandText = "show tables;";
-               // MysqlCommand.ExecuteNonQuery();
-               // MysqlDataAdapter.Fill(MySqlDataSet);
-                //MysqlCommand.CommandText = "use pet;";
-               // MysqlCommand.ExecuteNonQuery();
+                MysqlCommand.CommandText = "use "+strBasedeDatos+";" ;
+                MysqlCommand.ExecuteNonQuery();
+                MysqlCommand.CommandText = "show tables;";
+                MysqlCommand.ExecuteNonQuery();
+                MysqlDataAdapter.Fill(MySqlDataSet);
+                MysqlCommand.CommandText = "use pet;";
+                MysqlCommand.ExecuteNonQuery();
 
                 return MySqlDataSet;
             }
@@ -140,8 +140,8 @@ namespace Manejadro_Base_de_Datos
             }
             if (tipoServidor == (int)enumTipo.MySQL)
             {
-                //MysqlCommand.CommandText = "create database " + nombre + ";";
-                //MysqlCommand.ExecuteNonQuery();
+                MysqlCommand.CommandText = "create database " + nombre + ";";
+                MysqlCommand.ExecuteNonQuery();
             }
 
         }

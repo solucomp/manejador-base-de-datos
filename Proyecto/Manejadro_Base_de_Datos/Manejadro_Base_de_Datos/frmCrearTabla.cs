@@ -1,3 +1,4 @@
+
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -6,77 +7,113 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 
 namespace Manejadro_Base_de_Datos
 {
     public partial class frmCrearTabla : Form
     {
-        Usuario usuario_actual;
-        string campos, basededatos;
-
-        public frmCrearTabla(Usuario us, string BD)
+        public frmCrearTabla(Usuario u,string dataBase)
         {
+            usuarioActual = u;
+            BasedeDatos = dataBase;
+
             InitializeComponent();
-            usuario_actual = us;
-            basededatos = BD;
         }
 
-        private void frmCrearTabla_Load(object sender, EventArgs e)
+        private Usuario usuarioActual;
+        private string BasedeDatos;
+
+        private void btnCrear_Click(object sender, EventArgs e)
         {
-            DataGridViewTextBoxColumn dgtxtbox = new DataGridViewTextBoxColumn();
-            DataGridViewComboBoxColumn dgcmb = new DataGridViewComboBoxColumn();
-            DataGridViewCheckBoxColumn dgchkboxnull = new DataGridViewCheckBoxColumn(false);
-            DataGridViewCheckBoxColumn dgchkboxpk = new DataGridViewCheckBoxColumn(false);
-
-            dgcmb.Items.Add("int");
-            dgcmb.Items.Add("float");
-            dgcmb.Items.Add("bit");
-            dgcmb.Items.Add("varchar(MAX)");
-
-            DataGridTabla.Columns.AddRange(new DataGridViewColumn[]{
-            dgtxtbox,dgcmb,dgchkboxpk,dgchkboxnull});
-
-            dgtxtbox.HeaderText = "Campo";
-            dgcmb.HeaderText = "Tipo";
-            dgchkboxpk.HeaderText = "PK";
-            dgchkboxnull.HeaderText = "NULL";
-        }
-
-        private void BtnCrearTabla_Click(object sender, EventArgs e)
-        {
-            for (int i = 0; i < DataGridTabla.Rows.Count - 1; i++)
-            {
-                campos = campos + DataGridTabla.Rows[i].Cells[0].Value.ToString() + " ";
-                campos = campos + DataGridTabla.Rows[i].Cells[1].Value.ToString() + " ";
-
-                if (DataGridTabla.Rows[i].Cells[2].Value != null)
-                    campos = campos + "Primary Key ";
-
-                if (DataGridTabla.Rows[i].Cells[3].Value != null)
-                    campos = campos + "not null";
-
-                if (i < DataGridTabla.Rows.Count - 1)
-                    campos = campos + ",";
-            }
-
             try
             {
-                usuario_actual.crearTablas(basededatos, TxtNombreTabla.Text, campos);
-
-                MessageBox.Show("Tabla creada exitosamente", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                usuarioActual.crearTabla(txtNombre.Text,BasedeDatos,listaCampos);
+                this.Close();
             }
             catch (Exception exc)
             {
-                MessageBox.Show(exc.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(exc.Message);
             }
         }
 
-        private void BtnRegresar_Click(object sender, EventArgs e)
+        private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        private void cmbTipo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbTipo.SelectedIndex == 2)
+            {
+                txtlongitud.Enabled = true;
+            }
+            else
+            {
+                txtlongitud.Enabled = false;
+            }
+        }
 
+        List<string> listaCampos = new List<string>();
+
+        private void btnAgregarCampo_Click(object sender, EventArgs e)
+        {            
+            int longitud;
+            
+            try
+            {
+                
+
+                if (chnotnull.Checked == false)
+                {
+                    if (cmbTipo.SelectedIndex != 2)
+                    {
+                        listaCampos.Add(txtnombrecampo.Text + " " + cmbTipo.Text);
+                    }
+                    else
+                    {
+                        longitud = int.Parse(txtlongitud.Text);
+                        listaCampos.Add(txtnombrecampo.Text + " " + cmbTipo.Text + " (" + txtlongitud.Text + ")");
+                    }
+                }
+                else
+                {
+                    if (cmbTipo.SelectedIndex != 2)
+                    {
+                        listaCampos.Add(txtnombrecampo.Text + " " + cmbTipo.Text+" NOT NULL");
+                    }
+                    else
+                    {
+                        listaCampos.Add(txtnombrecampo.Text + " " + cmbTipo.Text + " (" + txtlongitud.Text + ") NOT NULL");
+                    }
+
+                }
+
+                if(chclave.Checked == true)
+                {
+                    listaCampos.Add("PRIMARY KEY ("+txtnombrecampo.Text+")");
+                    chclave.Checked = false;
+                    chclave.Visible = false;
+                }
+
+                txtnombrecampo.Clear();
+                cmbTipo.SelectedIndex = -1;
+                txtlongitud.Text = "";
+                chnotnull.Checked = false;
+                txtnombrecampo.Focus();
+
+
+            }
+            catch(Exception exc)
+            {
+                MessageBox.Show(exc.Message);                            
+            }
+
+
+        }
+
+        
+
+        
     }
 }
+

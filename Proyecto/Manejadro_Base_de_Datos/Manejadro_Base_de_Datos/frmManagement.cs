@@ -45,11 +45,11 @@ namespace Manejadro_Base_de_Datos
             }
             else{
                 cmbBasesDeDatos.SelectedIndex = BasedeDatosActual - 1 ;
-            }
+            }            
 
             DataSet tmpDataSetTables = usuarioActual.obtenerTablas(cmbBasesDeDatos.Text);
             listTablas.DisplayMember = "name";
-            listTablas.DataSource = tmpDataSetTables.Tables[0];
+            listTablas.DataSource = tmpDataSetTables.Tables[0];            
 
             flag = false;   
         }
@@ -75,6 +75,7 @@ namespace Manejadro_Base_de_Datos
                 try
                 {
                     usuarioActual.eliminarBasedeDatos(cmbBasesDeDatos.Text);
+                   
                     actualizarBasesdeDatos();
                 }catch(Exception exc){
                     MessageBox.Show(exc.Message);
@@ -93,11 +94,32 @@ namespace Manejadro_Base_de_Datos
             }          
         }
 
+
         private void btnCrearTabla_Click(object sender, EventArgs e)
         {
-            frmCrearTabla objfrmCrearTabla = new frmCrearTabla(usuarioActual, cmbBasesDeDatos.Text);
-            objfrmCrearTabla.ShowDialog();
+            frmCrearTabla objfrmCrear = new frmCrearTabla(usuarioActual,cmbBasesDeDatos.Text);
+            objfrmCrear.ShowDialog();
             actualizarBasesdeDatos();
         }
+
+        private void btnEliminarTabla_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("¿Seguro que desea eliminar la tabla \"" + listTablas.Text + "\" ?", "Confirmar", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                try
+                {
+                    usuarioActual.eliminarTabla(cmbBasesDeDatos.Text,listTablas.Text);
+                    actualizarBasesdeDatos();
+                }
+                catch (Exception exc)
+                {
+                    MessageBox.Show(exc.Message);
+                }
+
+            }
+
+        }
+        
+
     }
 }
