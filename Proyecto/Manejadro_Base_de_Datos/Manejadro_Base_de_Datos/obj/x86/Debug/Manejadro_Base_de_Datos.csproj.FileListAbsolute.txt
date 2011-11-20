@@ -38,3 +38,5 @@ C:\Documents and Settings\Administrador\Escritorio\Sincronizada\Proyecto\Manejad
 C:\Documents and Settings\Administrador\Escritorio\Sincronizada\Proyecto\Manejadro_Base_de_Datos\Manejadro_Base_de_Datos\obj\x86\Debug\Manejadro_Base_de_Datos.Properties.Resources.resources
 C:\Documents and Settings\Administrador\Escritorio\Sincronizada\Proyecto\Manejadro_Base_de_Datos\Manejadro_Base_de_Datos\obj\x86\Debug\GenerateResource.read.1.tlog
 C:\Documents and Settings\Administrador\Escritorio\Sincronizada\Proyecto\Manejadro_Base_de_Datos\Manejadro_Base_de_Datos\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Owner\Documents\semestre 9\metricas2\champions\Proyecto\Manejadro_Base_de_Datos\Manejadro_Base_de_Datos\obj\x86\Debug\Manejadro_Base_de_Datos.exe
+C:\Users\Owner\Documents\semestre 9\metricas2\champions\Proyecto\Manejadro_Base_de_Datos\Manejadro_Base_de_Datos\obj\x86\Debug\Manejadro_Base_de_Datos.pdb
