@@ -34,7 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MySql.Data, Version=6.3.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data">
+      <HintPath>..\..\..\..\..\Desktop\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -59,6 +61,12 @@
     <Compile Include="frmCrearBasedeDatos.Designer.cs">
       <DependentUpon>frmCrearBasedeDatos.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmCrearTabla.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCrearTabla.Designer.cs">
+      <DependentUpon>frmCrearTabla.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmManagement.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,6 +81,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmCrearBasedeDatos.resx">
       <DependentUpon>frmCrearBasedeDatos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCrearTabla.resx">
+      <DependentUpon>frmCrearTabla.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmManagement.resx">
       <DependentUpon>frmManagement.cs</DependentUpon>

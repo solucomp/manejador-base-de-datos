@@ -31,8 +31,6 @@ namespace Manejadro_Base_de_Datos
             BasedeDatosActual = cmbBasesDeDatos.SelectedIndex;            
         }
 
-        
-
         //Actualiza las bases de datos del comboBox
         private void actualizarBasesdeDatos()
         {
@@ -93,6 +91,13 @@ namespace Manejadro_Base_de_Datos
                 BasedeDatosActual = cmbBasesDeDatos.SelectedIndex;
                 actualizarBasesdeDatos();          
             }          
+        }
+
+        private void btnCrearTabla_Click(object sender, EventArgs e)
+        {
+            frmCrearTabla objfrmCrearTabla = new frmCrearTabla(usuarioActual, cmbBasesDeDatos.Text);
+            objfrmCrearTabla.ShowDialog();
+            actualizarBasesdeDatos();
         }
     }
 }
