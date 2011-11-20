@@ -35,11 +35,13 @@
             this.lbBaseDeDatos = new System.Windows.Forms.Label();
             this.listTablas = new System.Windows.Forms.ListBox();
             this.lbTablas = new System.Windows.Forms.Label();
+            this.btnCrearTabla = new System.Windows.Forms.Button();
             this.gbMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbMenu
             // 
+            this.gbMenu.Controls.Add(this.btnCrearTabla);
             this.gbMenu.Controls.Add(this.btnEliminarBasedeDatos);
             this.gbMenu.Controls.Add(this.btnCrearBaseDeDatos);
             this.gbMenu.Location = new System.Drawing.Point(12, 70);
@@ -78,8 +80,6 @@
             this.cmbBasesDeDatos.Size = new System.Drawing.Size(211, 21);
             this.cmbBasesDeDatos.TabIndex = 1;
             this.cmbBasesDeDatos.SelectedIndexChanged += new System.EventHandler(this.cmbBasesDeDatos_SelectedIndexChanged);
-            
-            
             // 
             // lbBaseDeDatos
             // 
@@ -106,6 +106,16 @@
             this.lbTablas.Size = new System.Drawing.Size(82, 13);
             this.lbTablas.TabIndex = 4;
             this.lbTablas.Text = "Bases de Datos";
+            // 
+            // btnCrearTabla
+            // 
+            this.btnCrearTabla.Location = new System.Drawing.Point(28, 85);
+            this.btnCrearTabla.Name = "btnCrearTabla";
+            this.btnCrearTabla.Size = new System.Drawing.Size(150, 27);
+            this.btnCrearTabla.TabIndex = 4;
+            this.btnCrearTabla.Text = "Crear Tabla";
+            this.btnCrearTabla.UseVisualStyleBackColor = true;
+            this.btnCrearTabla.Click += new System.EventHandler(this.btnCrearTabla_Click);
             // 
             // frmManagement
             // 
@@ -140,5 +150,6 @@
         private System.Windows.Forms.Button btnEliminarBasedeDatos;
         private System.Windows.Forms.ListBox listTablas;
         private System.Windows.Forms.Label lbTablas;
+        private System.Windows.Forms.Button btnCrearTabla;
     }
 }

@@ -172,5 +172,17 @@ namespace Manejadro_Base_de_Datos
             }
         }
 
+        public void crearTablas(string basededatos, string NombreTabla, string campos)
+        {
+            if (tipoServidor == (int)enumTipo.SQLServer)
+            {
+                sqlServerCommand.CommandText = "USE " + basededatos;
+                sqlServerCommand.ExecuteNonQuery();
+
+                sqlServerCommand.CommandText = "CREATE TABLE " + NombreTabla + "(" + campos + ")"; ;
+                sqlServerCommand.ExecuteNonQuery();
+            }
+        }
+
     }
 }
