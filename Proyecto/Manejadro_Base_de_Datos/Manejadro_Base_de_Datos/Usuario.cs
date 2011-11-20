@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Data.SqlClient;
 using System.Data;
+using MySql.Data.Types;
+using MySql.Data.MySqlClient;
 
 namespace Manejadro_Base_de_Datos
 {
@@ -23,7 +25,12 @@ namespace Manejadro_Base_de_Datos
         //Objetos necesario para SQLServer
         private SqlConnection sqlServerConnection;
         private SqlCommand sqlServerCommand;        
-        private SqlDataAdapter sqlServerDataAdapter;        
+        private SqlDataAdapter sqlServerDataAdapter;  
+      
+        //objetos necesarios para MySql
+        private MySqlConnection MysqlConnection;
+        private MySqlCommand MysqlCommand;
+        private MySqlDataAdapter MysqlDataAdapter;
 
         //Constructor de la clase.
         public Usuario(String strUsuario, String strPassword,int TipoBD)
@@ -43,7 +50,12 @@ namespace Manejadro_Base_de_Datos
             //Abrir la coneccion a MySQL
             if(tipoServidor == (int) enumTipo.MySQL)
             {
-
+                strConeccion = "server=localhost;user=root;port=3306;password=default;";
+                MysqlConnection = new MySqlConnection(strConeccion);
+                MysqlConnection.Open();
+                MysqlCommand = new MySqlCommand();
+                MysqlDataAdapter = new MySqlDataAdapter();
+                MysqlCommand.Connection = MysqlConnection;
             }
             //Abrir la coneccion a SQLite
             if (tipoServidor == (int)enumTipo.SQLite)
@@ -70,7 +82,16 @@ namespace Manejadro_Base_de_Datos
                 sqlServerDataAdapter.Fill(sqlServerDataSet);
                 return sqlServerDataSet;
             }
+            if (tipoServidor == (int)enumTipo.MySQL)
+            {
+                DataSet MySqlDataSet = new DataSet();
 
+                MysqlCommand.CommandText = "select SCHEMA_NAME from information_schema.SCHEMATA;";
+                MysqlDataAdapter.SelectCommand = MysqlCommand;
+                MysqlCommand.ExecuteNonQuery();
+                MysqlDataAdapter.Fill(MySqlDataSet);
+                return MySqlDataSet;
+            }
 
             return null;
         }
@@ -92,6 +113,20 @@ namespace Manejadro_Base_de_Datos
                 return sqlServerDataSet;
             }
 
+            if (tipoServidor == (int)enumTipo.MySQL)
+            {
+                DataSet MySqlDataSet = new DataSet();
+
+                MysqlCommand.CommandText = "use "+strBasedeDatos+";" ;
+                MysqlCommand.ExecuteNonQuery();
+                MysqlCommand.CommandText = "show tables;";
+                MysqlCommand.ExecuteNonQuery();
+                MysqlDataAdapter.Fill(MySqlDataSet);
+                MysqlCommand.CommandText = "use pet;";
+                MysqlCommand.ExecuteNonQuery();
+
+                return MySqlDataSet;
+            }
             return null;
         }
 
@@ -103,6 +138,11 @@ namespace Manejadro_Base_de_Datos
                 sqlServerCommand.CommandText = "create database " + nombre + "";
                 sqlServerCommand.ExecuteNonQuery();
             }
+            if (tipoServidor == (int)enumTipo.MySQL)
+            {
+                MysqlCommand.CommandText = "create database " + nombre + ";";
+                MysqlCommand.ExecuteNonQuery();
+            }
 
         }
 
@@ -113,7 +153,11 @@ namespace Manejadro_Base_de_Datos
                 sqlServerCommand.CommandText = "drop database " + nombre + "";
                 sqlServerCommand.ExecuteNonQuery();
             }
-
+            if (tipoServidor == (int)enumTipo.MySQL)
+            {
+                MysqlCommand.CommandText = "drop database " + nombre + ";";
+                MysqlCommand.ExecuteNonQuery();
+            }
         }
 
         public void cerrarConexion()
@@ -121,6 +165,10 @@ namespace Manejadro_Base_de_Datos
             if(tipoServidor == (int) enumTipo.SQLServer)
             {
                 sqlServerConnection.Close();
+            }
+            if (tipoServidor == (int)enumTipo.MySQL)
+            {
+                MysqlConnection.Close();
             }
         }
 
