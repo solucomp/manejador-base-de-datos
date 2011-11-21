@@ -41,3 +41,18 @@ C:\Documents and Settings\Administrador\Escritorio\Sincronizada\Proyecto\Manejad
 C:\Users\Owner\Documents\semestre 9\metricas2\champions\Proyecto\Manejadro_Base_de_Datos\Manejadro_Base_de_Datos\obj\x86\Debug\Manejadro_Base_de_Datos.exe
 C:\Users\Owner\Documents\semestre 9\metricas2\champions\Proyecto\Manejadro_Base_de_Datos\Manejadro_Base_de_Datos\obj\x86\Debug\Manejadro_Base_de_Datos.pdb
 C:\Documents and Settings\Administrador\Escritorio\Proyecto\Proyecto\Manejadro_Base_de_Datos\Manejadro_Base_de_Datos\obj\x86\Debug\Manejadro_Base_de_Datos.frmCrearTabla.resources
+C:\Users\joshua\Desktop\metricas2\Proyecto\Manejadro_Base_de_Datos\Manejadro_Base_de_Datos\obj\x86\Debug\Manejadro_Base_de_Datos.exe
+C:\Users\joshua\Desktop\metricas2\Proyecto\Manejadro_Base_de_Datos\Manejadro_Base_de_Datos\obj\x86\Debug\Manejadro_Base_de_Datos.pdb
+C:\Users\joshua\Desktop\metricas2\Proyecto\Manejadro_Base_de_Datos\Manejadro_Base_de_Datos\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\joshua\Desktop\metricas2\Proyecto\Manejadro_Base_de_Datos\Manejadro_Base_de_Datos\obj\x86\Debug\Interop.ADODB.dll
+C:\Users\joshua\Desktop\metricas2\Proyecto\Manejadro_Base_de_Datos\Manejadro_Base_de_Datos\obj\x86\Debug\Interop.ADOX.dll
+C:\Users\joshua\Desktop\metricas2\Proyecto\Manejadro_Base_de_Datos\Manejadro_Base_de_Datos\obj\x86\Debug\Manejadro_Base_de_Datos.csproj.ResolveComReference.cache
+C:\Users\joshua\Desktop\metricas2\Proyecto\Manejadro_Base_de_Datos\Manejadro_Base_de_Datos\obj\x86\Debug\Manejadro_Base_de_Datos.frmAcceso.resources
+C:\Users\joshua\Desktop\metricas2\Proyecto\Manejadro_Base_de_Datos\Manejadro_Base_de_Datos\obj\x86\Debug\Manejadro_Base_de_Datos.frmCrearBasedeDatos.resources
+C:\Users\joshua\Desktop\metricas2\Proyecto\Manejadro_Base_de_Datos\Manejadro_Base_de_Datos\obj\x86\Debug\Manejadro_Base_de_Datos.frmCrearTabla.resources
+C:\Users\joshua\Desktop\metricas2\Proyecto\Manejadro_Base_de_Datos\Manejadro_Base_de_Datos\obj\x86\Debug\Manejadro_Base_de_Datos.frmManagement.resources
+C:\Users\joshua\Desktop\metricas2\Proyecto\Manejadro_Base_de_Datos\Manejadro_Base_de_Datos\obj\x86\Debug\Manejadro_Base_de_Datos.Properties.Resources.resources
+C:\Users\joshua\Desktop\metricas2\Proyecto\Manejadro_Base_de_Datos\Manejadro_Base_de_Datos\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\joshua\Desktop\metricas2\Proyecto\Manejadro_Base_de_Datos\Manejadro_Base_de_Datos\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\joshua\Desktop\metricas2\Proyecto\Manejadro_Base_de_Datos\Manejadro_Base_de_Datos\bin\Debug\Manejadro_Base_de_Datos.exe
+C:\Users\joshua\Desktop\metricas2\Proyecto\Manejadro_Base_de_Datos\Manejadro_Base_de_Datos\bin\Debug\Manejadro_Base_de_Datos.pdb

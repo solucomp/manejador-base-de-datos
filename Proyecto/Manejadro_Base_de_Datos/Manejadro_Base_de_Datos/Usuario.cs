@@ -6,11 +6,13 @@ using System.Data.SqlClient;
 using System.Data;
 using MySql.Data.Types;
 using MySql.Data.MySqlClient;
+using System.Data.OleDb;
 
 namespace Manejadro_Base_de_Datos
 {
     public class Usuario
     {
+
         //Datos de la clase
         public enum enumTipo
         {
@@ -21,6 +23,7 @@ namespace Manejadro_Base_de_Datos
         };
         public static String strConeccion;
         public int tipoServidor;
+         
 
         //Objetos necesario para SQLServer
         private SqlConnection sqlServerConnection;
@@ -31,6 +34,11 @@ namespace Manejadro_Base_de_Datos
         private MySqlConnection MysqlConnection;
         private MySqlCommand MysqlCommand;
         private MySqlDataAdapter MysqlDataAdapter;
+
+        //objetos necesarios para Access
+        private OleDbConnection accessConection;
+        private OleDbCommand accessCommand;
+        private OleDbDataAdapter accessAdapter;
 
         //Constructor de la clase.
         public Usuario(String strUsuario, String strPassword,int TipoBD)
@@ -60,12 +68,18 @@ namespace Manejadro_Base_de_Datos
             //Abrir la coneccion a SQLite
             if (tipoServidor == (int)enumTipo.SQLite)
             {
+                
 
             }
             //Abrir la coneccion a Access
             if (tipoServidor == (int)enumTipo.Access)
             {
-
+                strConeccion = "Provider=Microsoft.ACE.OLEDB.12.0;" + "Data Source=|DataDirectory|\\Database1.accdb;";
+                accessConection = new OleDbConnection(strConeccion);
+                accessConection.Open();
+                accessCommand= new OleDbCommand();
+                accessAdapter= new OleDbDataAdapter();
+                accessCommand.Connection = accessConection;
             }            
 
         }       
@@ -92,7 +106,16 @@ namespace Manejadro_Base_de_Datos
                 MysqlDataAdapter.Fill(MySqlDataSet);
                 return MySqlDataSet;
             }
+            if (tipoServidor == (int)enumTipo.Access)
+            {
+                DataSet accesDataset = new DataSet();
 
+                accessCommand.CommandText= "select name from sys.databases";
+                accessAdapter.SelectCommand = accessCommand;
+                accessCommand.ExecuteNonQuery();
+                accessAdapter.Fill(accesDataset);
+                return accesDataset;
+            }
             return null;
         }
 
@@ -127,6 +150,21 @@ namespace Manejadro_Base_de_Datos
 
                 return MySqlDataSet;
             }
+
+             if (tipoServidor == (int)enumTipo.Access)
+            {
+                DataSet accessDataset = new DataSet();
+
+                accessCommand.CommandText = "use "+strBasedeDatos+";" ;
+                accessCommand.ExecuteNonQuery();
+                accessCommand.CommandText="Show tables;";
+                accessCommand.ExecuteNonQuery();
+                accessAdapter.Fill(accessDataset);
+                accessCommand.CommandText="use master";
+                accessCommand.ExecuteNonQuery();
+
+                return accessDataset;
+            }
             return null;
         }
 
@@ -143,6 +181,11 @@ namespace Manejadro_Base_de_Datos
                 MysqlCommand.CommandText = "create database " + nombre + ";";
                 MysqlCommand.ExecuteNonQuery();
             }
+            if (tipoServidor == (int)enumTipo.Access)
+            {
+                accessCommand.CommandText = "create database " + nombre + ";";
+                accessCommand.ExecuteNonQuery();
+            }
 
         }
 
@@ -158,6 +201,11 @@ namespace Manejadro_Base_de_Datos
                 MysqlCommand.CommandText = "drop database " + nombre + ";";
                 MysqlCommand.ExecuteNonQuery();
             }
+            if (tipoServidor == (int)enumTipo.Access)
+            {
+                accessCommand.CommandText = "drop database " + nombre + ";";
+                accessCommand.ExecuteNonQuery();
+            }
         }
 
         public void eliminarTabla(string strBasedeDatos, string strTabla)
@@ -168,6 +216,13 @@ namespace Manejadro_Base_de_Datos
                 sqlServerCommand.ExecuteNonQuery();
                 sqlServerCommand.CommandText = "drop table " + strTabla;
                 sqlServerCommand.ExecuteNonQuery();
+            }
+            if (tipoServidor == (int)enumTipo.Access)
+            {
+                accessCommand.CommandText= "use " +  strBasedeDatos;
+                accessCommand.ExecuteNonQuery();
+                accessCommand.CommandText = "drop table " + strTabla;
+                accessCommand.ExecuteNonQuery();
             }
         }
 
@@ -202,6 +257,33 @@ namespace Manejadro_Base_de_Datos
 
             }
 
+            if (tipoServidor == (int)enumTipo.Access)
+            {
+                string strQuery = "CREATE TABLE " + nombre + " ( ";
+
+                int counter = 0;
+                foreach (string str in listaCampos)
+                {
+                    if (counter < listaCampos.Count - 1)
+                    {
+                        strQuery += str + ",";
+                    }
+                    else
+                    {
+                        strQuery += str + ")";
+                    }
+                    counter++;
+                }
+
+                accessCommand.CommandText = "use "+BasedeDatos;
+                accessCommand.ExecuteNonQuery();
+                accessCommand.CommandText = strQuery;
+                accessCommand.ExecuteNonQuery();
+                accessCommand.CommandText = "use master";
+                accessCommand.ExecuteNonQuery();
+
+            }
+
         }
 
         public void cerrarConexion()
@@ -214,6 +296,10 @@ namespace Manejadro_Base_de_Datos
             {
                 MysqlConnection.Close();
             }
+             if (tipoServidor == (int)enumTipo.Access)
+            {
+                accessConection.Close();
+            }
         }
 
         public void crearTablas(string basededatos, string NombreTabla, string campos)
@@ -225,6 +311,15 @@ namespace Manejadro_Base_de_Datos
 
                 sqlServerCommand.CommandText = "CREATE TABLE " + NombreTabla + "(" + campos + ")"; ;
                 sqlServerCommand.ExecuteNonQuery();
+            }
+
+            if (tipoServidor == (int)enumTipo.Access)
+            {
+                accessCommand.CommandText = "USE " + basededatos;
+                accessCommand.ExecuteNonQuery();
+
+                accessCommand.CommandText = "CREATE TABLE " + NombreTabla + "(" + campos + ")"; ;
+                accessCommand.ExecuteNonQuery();
             }
         }
 

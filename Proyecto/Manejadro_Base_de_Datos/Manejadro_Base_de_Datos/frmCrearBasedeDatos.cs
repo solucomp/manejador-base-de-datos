@@ -6,9 +6,11 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using ADOX;
 
 namespace Manejadro_Base_de_Datos
 {
+
     public partial class frmCrearBasedeDatos : Form
     {
         private Usuario usuarioActual;
@@ -35,5 +37,6 @@ namespace Manejadro_Base_de_Datos
         {
             this.Close();
         }
+
     }
 }
