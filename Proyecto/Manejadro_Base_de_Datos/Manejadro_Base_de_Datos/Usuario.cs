@@ -142,11 +142,11 @@ namespace Manejadro_Base_de_Datos
 
                 MysqlCommand.CommandText = "use "+strBasedeDatos+";" ;
                 MysqlCommand.ExecuteNonQuery();
-                MysqlCommand.CommandText = "show tables;";
+                MysqlCommand.CommandText = "select table_name from information_schema.tables where table_schema='"+strBasedeDatos+"';";
                 MysqlCommand.ExecuteNonQuery();
                 MysqlDataAdapter.Fill(MySqlDataSet);
-                MysqlCommand.CommandText = "use pet;";
-                MysqlCommand.ExecuteNonQuery();
+                //MysqlCommand.CommandText = "use pet;";
+                //MysqlCommand.ExecuteNonQuery();
 
                 return MySqlDataSet;
             }
@@ -224,6 +224,13 @@ namespace Manejadro_Base_de_Datos
                 accessCommand.CommandText = "drop table " + strTabla;
                 accessCommand.ExecuteNonQuery();
             }
+            if (tipoServidor == (int)enumTipo.MySQL)
+            {
+                MysqlCommand.CommandText = "use " + strBasedeDatos;
+                MysqlCommand.ExecuteNonQuery();
+                MysqlCommand.CommandText = "drop table " + strTabla;
+                MysqlCommand.ExecuteNonQuery();
+            }
         }
 
         public void crearTabla(string nombre, string BasedeDatos, List<string> listaCampos)
@@ -283,11 +290,34 @@ namespace Manejadro_Base_de_Datos
                 accessCommand.ExecuteNonQuery();
 
             }
+            if (tipoServidor == (int)enumTipo.MySQL)
+            {
+                string strQuery = "CREATE TABLE " + nombre + " ( ";
+
+                int counter = 0;
+                foreach (string str in listaCampos)
+                {
+                    if (counter < listaCampos.Count - 1)
+                    {
+                        strQuery += str + ",";
+                    }
+                    else
+                    {
+                        strQuery += str + ")";
+                    }
+                    counter++;
+                }
+                MysqlCommand.CommandText = "use " + BasedeDatos;
+                MysqlCommand.ExecuteNonQuery();
+                MysqlCommand.CommandText = strQuery;
+                MysqlCommand.ExecuteNonQuery();
+            }
 
         }
 
         public void cerrarConexion()
         {
+
             if(tipoServidor == (int) enumTipo.SQLServer)
             {
                 sqlServerConnection.Close();

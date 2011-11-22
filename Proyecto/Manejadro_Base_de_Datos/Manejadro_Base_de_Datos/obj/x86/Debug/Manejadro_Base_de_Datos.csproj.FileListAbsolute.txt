@@ -56,3 +56,15 @@ C:\Users\joshua\Desktop\metricas2\Proyecto\Manejadro_Base_de_Datos\Manejadro_Bas
 C:\Users\joshua\Desktop\metricas2\Proyecto\Manejadro_Base_de_Datos\Manejadro_Base_de_Datos\obj\x86\Debug\GenerateResource.write.1.tlog
 C:\Users\joshua\Desktop\metricas2\Proyecto\Manejadro_Base_de_Datos\Manejadro_Base_de_Datos\bin\Debug\Manejadro_Base_de_Datos.exe
 C:\Users\joshua\Desktop\metricas2\Proyecto\Manejadro_Base_de_Datos\Manejadro_Base_de_Datos\bin\Debug\Manejadro_Base_de_Datos.pdb
+C:\Users\Al\Documents\alonso\itesi\9to sem\ronald\manejador-base-de-datos\Proyecto\Manejadro_Base_de_Datos\Manejadro_Base_de_Datos\obj\x86\Debug\Manejadro_Base_de_Datos.exe
+C:\Users\Al\Documents\alonso\itesi\9to sem\ronald\manejador-base-de-datos\Proyecto\Manejadro_Base_de_Datos\Manejadro_Base_de_Datos\obj\x86\Debug\Manejadro_Base_de_Datos.pdb
+C:\Users\Al\Documents\alonso\itesi\9to sem\ronald\manejador-base-de-datos\Proyecto\Manejadro_Base_de_Datos\Manejadro_Base_de_Datos\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Al\Documents\alonso\itesi\9to sem\ronald\manejador-base-de-datos\Proyecto\Manejadro_Base_de_Datos\Manejadro_Base_de_Datos\obj\x86\Debug\Manejadro_Base_de_Datos.frmAcceso.resources
+C:\Users\Al\Documents\alonso\itesi\9to sem\ronald\manejador-base-de-datos\Proyecto\Manejadro_Base_de_Datos\Manejadro_Base_de_Datos\obj\x86\Debug\Manejadro_Base_de_Datos.frmCrearBasedeDatos.resources
+C:\Users\Al\Documents\alonso\itesi\9to sem\ronald\manejador-base-de-datos\Proyecto\Manejadro_Base_de_Datos\Manejadro_Base_de_Datos\obj\x86\Debug\Manejadro_Base_de_Datos.frmCrearTabla.resources
+C:\Users\Al\Documents\alonso\itesi\9to sem\ronald\manejador-base-de-datos\Proyecto\Manejadro_Base_de_Datos\Manejadro_Base_de_Datos\obj\x86\Debug\Manejadro_Base_de_Datos.frmManagement.resources
+C:\Users\Al\Documents\alonso\itesi\9to sem\ronald\manejador-base-de-datos\Proyecto\Manejadro_Base_de_Datos\Manejadro_Base_de_Datos\obj\x86\Debug\Manejadro_Base_de_Datos.Properties.Resources.resources
+C:\Users\Al\Documents\alonso\itesi\9to sem\ronald\manejador-base-de-datos\Proyecto\Manejadro_Base_de_Datos\Manejadro_Base_de_Datos\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\Al\Documents\alonso\itesi\9to sem\ronald\manejador-base-de-datos\Proyecto\Manejadro_Base_de_Datos\Manejadro_Base_de_Datos\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Al\Documents\alonso\itesi\9to sem\ronald\manejador-base-de-datos\Proyecto\Manejadro_Base_de_Datos\Manejadro_Base_de_Datos\bin\Debug\Manejadro_Base_de_Datos.exe
+C:\Users\Al\Documents\alonso\itesi\9to sem\ronald\manejador-base-de-datos\Proyecto\Manejadro_Base_de_Datos\Manejadro_Base_de_Datos\bin\Debug\Manejadro_Base_de_Datos.pdb

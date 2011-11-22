@@ -37,8 +37,9 @@ namespace Manejadro_Base_de_Datos
             flag = true;
 
             DataSet tmpDataSetDataBases = usuarioActual.obtenerBasedeDatos();
-            cmbBasesDeDatos.DisplayMember = "name";
+            cmbBasesDeDatos.DisplayMember = "schema_name";
             cmbBasesDeDatos.DataSource = tmpDataSetDataBases.Tables[0];
+            //cmbBasesDeDatos.DisplayMember = tmpDataSetDataBases.Tables.ToString();
 
             if(cmbBasesDeDatos.Items.Count-1 >= BasedeDatosActual){
                 cmbBasesDeDatos.SelectedIndex = BasedeDatosActual;
@@ -48,9 +49,9 @@ namespace Manejadro_Base_de_Datos
             }            
 
             DataSet tmpDataSetTables = usuarioActual.obtenerTablas(cmbBasesDeDatos.Text);
-            listTablas.DisplayMember = "name";
-            listTablas.DataSource = tmpDataSetTables.Tables[0];            
-
+            listTablas.DisplayMember = "table_name";//"schema_name";
+            
+            listTablas.DataSource = tmpDataSetTables.Tables[0];
             flag = false;   
         }
 
