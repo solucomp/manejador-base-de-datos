@@ -7,6 +7,7 @@ using System.Data;
 using MySql.Data.Types;
 using MySql.Data.MySqlClient;
 using System.Data.OleDb;
+using System.Data.SQLite;
 
 namespace Manejadro_Base_de_Datos
 {
@@ -40,6 +41,11 @@ namespace Manejadro_Base_de_Datos
         private OleDbCommand accessCommand;
         private OleDbDataAdapter accessAdapter;
 
+        //objetos necesarios para SQLite
+        private SQLiteCommand sqliteCommand;
+        private SQLiteConnection sqliteConnection;
+        private SQLiteDataAdapter sqliteDataAdapteer;
+
         //Constructor de la clase.
         public Usuario(String strUsuario, String strPassword,int TipoBD)
         {
@@ -68,8 +74,12 @@ namespace Manejadro_Base_de_Datos
             //Abrir la coneccion a SQLite
             if (tipoServidor == (int)enumTipo.SQLite)
             {
-                
-
+                strConeccion = "Data Source=personal.sqlite;Version=3;New=False;Compress=True;";
+                sqliteConnection = new SQLiteConnection(strConeccion);
+                sqliteConnection.Open();
+                sqliteCommand = new SQLiteCommand();
+                sqliteDataAdapteer = new SQLiteDataAdapter();
+                sqliteCommand.Connection = sqliteConnection;
             }
             //Abrir la coneccion a Access
             if (tipoServidor == (int)enumTipo.Access)
@@ -95,6 +105,16 @@ namespace Manejadro_Base_de_Datos
                 sqlServerCommand.ExecuteNonQuery();
                 sqlServerDataAdapter.Fill(sqlServerDataSet);
                 return sqlServerDataSet;
+            }
+            if (tipoServidor == (int)enumTipo.SQLite)
+            {
+                DataSet sqliteDataSet = new DataSet();
+
+                sqliteCommand.CommandText = "select name from sys.databases";
+                sqliteDataAdapteer.SelectCommand = sqliteCommand;
+                sqliteCommand.ExecuteNonQuery();
+                sqliteDataAdapteer.Fill(sqliteDataSet);
+                return sqliteDataSet;
             }
             if (tipoServidor == (int)enumTipo.MySQL)
             {
@@ -151,6 +171,21 @@ namespace Manejadro_Base_de_Datos
                 return MySqlDataSet;
             }
 
+            if (tipoServidor == (int)enumTipo.SQLite) 
+            {
+                DataSet sqliteDataSet = new DataSet();
+
+                sqliteCommand.CommandText = "use " + strBasedeDatos + ";";
+                sqliteCommand.ExecuteNonQuery();
+                sqliteCommand.CommandText = "select name from sys.tables";
+                sqliteCommand.ExecuteNonQuery();
+                sqliteDataAdapteer.Fill(sqliteDataSet);
+                sqliteCommand.CommandText = "use master";
+                sqliteCommand.ExecuteNonQuery();
+
+                return sqliteDataSet;
+            }
+
              if (tipoServidor == (int)enumTipo.Access)
             {
                 DataSet accessDataset = new DataSet();
@@ -181,6 +216,11 @@ namespace Manejadro_Base_de_Datos
                 MysqlCommand.CommandText = "create database " + nombre + ";";
                 MysqlCommand.ExecuteNonQuery();
             }
+            if (tipoServidor == (int)enumTipo.SQLite) 
+            {
+                sqliteCommand.CommandText = "create database " + nombre + ";";
+                sqliteCommand.ExecuteNonQuery();
+            }
             if (tipoServidor == (int)enumTipo.Access)
             {
                 accessCommand.CommandText = "create database " + nombre + ";";
@@ -200,6 +240,11 @@ namespace Manejadro_Base_de_Datos
             {
                 MysqlCommand.CommandText = "drop database " + nombre + ";";
                 MysqlCommand.ExecuteNonQuery();
+            }
+            if (tipoServidor == (int)enumTipo.SQLite) 
+            {
+                sqliteCommand.CommandText = "drop database " + nombre + ";";
+                sqliteCommand.ExecuteNonQuery();
             }
             if (tipoServidor == (int)enumTipo.Access)
             {
@@ -223,6 +268,13 @@ namespace Manejadro_Base_de_Datos
                 accessCommand.ExecuteNonQuery();
                 accessCommand.CommandText = "drop table " + strTabla;
                 accessCommand.ExecuteNonQuery();
+            }
+            if (tipoServidor == (int)enumTipo.SQLite) 
+            {
+                sqliteCommand.CommandText = "use " + strBasedeDatos;
+                sqliteCommand.ExecuteNonQuery();
+                sqliteCommand.CommandText = "drop table " + strTabla;
+                sqliteCommand.ExecuteNonQuery();
             }
             if (tipoServidor == (int)enumTipo.MySQL)
             {
@@ -290,6 +342,30 @@ namespace Manejadro_Base_de_Datos
                 accessCommand.ExecuteNonQuery();
 
             }
+            if (tipoServidor == (int)enumTipo.SQLite) 
+            {
+                string strQuery = "CRATE TABLE " + nombre + " ( ";
+
+                int counter = 0;
+                foreach (string str in listaCampos) 
+                {
+                    if (counter < listaCampos.Count - 1)
+                    {
+                        strQuery += str + ",";
+                    }
+                    else
+                    {
+                        strQuery += str + ")";
+                    }
+                    counter++;
+                }
+                sqliteCommand.CommandText = "use " + BasedeDatos;
+                sqliteCommand.ExecuteNonQuery();
+                sqliteCommand.CommandText = strQuery;
+                sqliteCommand.ExecuteNonQuery();
+                sqliteCommand.CommandText = "use master";
+                sqliteCommand.ExecuteNonQuery();
+            }
             if (tipoServidor == (int)enumTipo.MySQL)
             {
                 string strQuery = "CREATE TABLE " + nombre + " ( ";
@@ -326,6 +402,10 @@ namespace Manejadro_Base_de_Datos
             {
                 MysqlConnection.Close();
             }
+            if (tipoServidor == (int)enumTipo.SQLite) 
+            {
+                sqliteConnection.Close();
+            }
              if (tipoServidor == (int)enumTipo.Access)
             {
                 accessConection.Close();
@@ -350,6 +430,15 @@ namespace Manejadro_Base_de_Datos
 
                 accessCommand.CommandText = "CREATE TABLE " + NombreTabla + "(" + campos + ")"; ;
                 accessCommand.ExecuteNonQuery();
+            }
+
+            if (tipoServidor == (int)enumTipo.SQLite) 
+            {
+                sqliteCommand.CommandText = "USE " + basededatos;
+                sqliteCommand.ExecuteNonQuery();
+
+                sqliteCommand.CommandText = "CREATE TABLE " + NombreTabla + "(" + campos + ")"; ;
+                sqliteCommand.ExecuteNonQuery();
             }
         }
 
